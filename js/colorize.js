@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+window.colorize = (function () {
 
   // Элементы для настройки цвета у мага
   var player = document.querySelector('.setup-player');

@@ -1,4 +1,5 @@
 'use strict';
+
 window.stat = (function () {
 
   // Свойства облака результатов
