@@ -17,6 +17,7 @@ window.setup = (function () {
     userDialog.classList.add('hidden');
     document.removeEventListener('keydown', onDialogEscPress);
     userDialogClose.removeEventListener('keydown', onDialogCloseEnterPress);
+    window.move.resetSetupCoords();
   }
 
   function onDialogEscPress(evt) {
@@ -66,11 +67,11 @@ window.setup = (function () {
 
   });
 
-  userNameInput.addEventListener('input', function () {
+  userNameInput.addEventListener('change', function () {
     var valueLength = userNameInput.value.length;
 
     if (valueLength < window.const.MIN_NAME_LENGTH) {
-      userNameInput.setCustomValidity('Ещё ' + (window.const.MIN_NAME_LENGTH - valueLength) + ' симв.');
+      userNameInput.setCustomValidity('Имя не может состоять из ' + valueLength + ' симв. Введите ещё ' + (window.const.MIN_NAME_LENGTH - valueLength) + ' симв.');
     } else if (valueLength > window.const.MAX_NAME_LENGTH) {
       userNameInput.setCustomValidity('Удалите лишние ' + (valueLength - window.const.MAX_NAME_LENGTH) + ' симв.');
     } else {

@@ -2,6 +2,10 @@
 
 window.const = (function () {
 
+  // Положение модального окна
+  var DEFAULT_SETUP_TOP = '80px';
+  var DEFAULT_SETUP_LEFT = '50%';
+
   // Имя игрока в статистике
   var USER = 'Вы';
 
@@ -24,7 +28,9 @@ window.const = (function () {
     COAT_COLORS: COAT_COLORS,
     EYES_COLORS: EYES_COLORS,
     FIREBALL_COLORS: FIREBALL_COLORS,
-    USER: USER
+    USER: USER,
+    DEFAULT_SETUP_TOP: DEFAULT_SETUP_TOP,
+    DEFAULT_SETUP_LEFT: DEFAULT_SETUP_LEFT
   };
 
 })();
