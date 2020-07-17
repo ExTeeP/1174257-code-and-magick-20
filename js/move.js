@@ -2,6 +2,10 @@
 
 window.move = (function () {
 
+  // Положение модального окна
+  var DEFAULT_SETUP_TOP = '80px';
+  var DEFAULT_SETUP_LEFT = '50%';
+
   var setup = document.querySelector('.setup');
   var handle = setup.querySelector('.upload');
   var isDragged = false;
@@ -57,8 +61,8 @@ window.move = (function () {
 
   return {
     resetSetupCoords: function () {
-      setup.style.top = window.const.DEFAULT_SETUP_TOP;
-      setup.style.left = window.const.DEFAULT_SETUP_LEFT;
+      setup.style.top = DEFAULT_SETUP_TOP;
+      setup.style.left = DEFAULT_SETUP_LEFT;
     }
   };
 

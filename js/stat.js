@@ -2,6 +2,9 @@
 
 window.stat = (function () {
 
+  // Имя игрока в статистике
+  var USER = 'Вы';
+
   // Свойства облака результатов
   var Cloud = {
     X: 100,
@@ -75,7 +78,7 @@ window.stat = (function () {
   // Параметры заливки цветом баров результатов
   // (генерация рандомного синего цвета для других пользователей)
   function getBarColor(name) {
-    return name === window.const.USER ? Bar.COLOR.player : Bar.COLOR.otherPlayers();
+    return name === USER ? Bar.COLOR.player : Bar.COLOR.otherPlayers();
   }
 
   // Поздравление с победой в конце уровня

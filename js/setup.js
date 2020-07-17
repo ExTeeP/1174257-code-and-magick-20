@@ -2,10 +2,22 @@
 
 window.setup = (function () {
 
+  // Валидация имени игрока
+  var MIN_NAME_LENGTH = 2;
+  var MAX_NAME_LENGTH = 25;
+
   var userDialog = document.querySelector('.setup');
   var userDialogOpen = document.querySelector('.setup-open');
   var userDialogClose = userDialog.querySelector('.setup-close');
   var userNameInput = userDialog.querySelector('.setup-user-name');
+  var dialogForm = userDialog.querySelector('.setup-wizard-form');
+  var dialogSubmitButton = userDialog.querySelector('.setup-submit');
+
+  function onFormSuccess() {
+    userDialog.classList.add('hidden');
+    dialogSubmitButton.textContent = 'Сохранить';
+    dialogSubmitButton.disabled = false;
+  }
 
   function openPopup() {
     userDialog.classList.remove('hidden');
@@ -70,14 +82,21 @@ window.setup = (function () {
   userNameInput.addEventListener('change', function () {
     var valueLength = userNameInput.value.length;
 
-    if (valueLength < window.const.MIN_NAME_LENGTH) {
-      userNameInput.setCustomValidity('Имя не может состоять из ' + valueLength + ' симв. Введите ещё ' + (window.const.MIN_NAME_LENGTH - valueLength) + ' симв.');
-    } else if (valueLength > window.const.MAX_NAME_LENGTH) {
-      userNameInput.setCustomValidity('Удалите лишние ' + (valueLength - window.const.MAX_NAME_LENGTH) + ' симв.');
+    if (valueLength < MIN_NAME_LENGTH) {
+      userNameInput.setCustomValidity('Имя не может состоять из ' + valueLength + ' симв. Введите ещё ' + (MIN_NAME_LENGTH - valueLength) + ' симв.');
+    } else if (valueLength > MAX_NAME_LENGTH) {
+      userNameInput.setCustomValidity('Удалите лишние ' + (valueLength - MAX_NAME_LENGTH) + ' симв.');
     } else {
       userNameInput.setCustomValidity('');
     }
 
+  });
+
+  dialogForm.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    window.backend.save(new FormData(dialogForm), onFormSuccess, window.error.errorHandler);
+    dialogSubmitButton.textContent = 'Данные отправляются...';
+    dialogSubmitButton.disabled = true;
   });
 
 })();
