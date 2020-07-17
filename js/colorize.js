@@ -2,6 +2,10 @@
 
 window.colorize = (function () {
 
+  var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+  var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+  var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+
   // Элементы для настройки цвета у мага
   var player = document.querySelector('.setup-player');
   var playerCoat = player.querySelector('.wizard-coat');
@@ -29,15 +33,15 @@ window.colorize = (function () {
 
   // Клики по элементам вызывают смену цвета элемента
   playerCoat.addEventListener('click', function () {
-    setFillInput(window.const.COAT_COLORS, playerCoat, playerCoatInput);
+    setFillInput(COAT_COLORS, playerCoat, playerCoatInput);
   });
 
   playerEyes.addEventListener('click', function () {
-    setFillInput(window.const.EYES_COLORS, playerEyes, playerEyesInput);
+    setFillInput(EYES_COLORS, playerEyes, playerEyesInput);
   });
 
   playerFireball.addEventListener('click', function () {
-    setFillInput(window.const.FIREBALL_COLORS, playerFireball, playerFireballInput);
+    setFillInput(FIREBALL_COLORS, playerFireball, playerFireballInput);
   });
 
 })();

@@ -22,6 +22,25 @@ window.utils = (function () {
       return Math.max.apply(null, arr);
     },
 
+    // Перемешивание массива
+    getShuffleArray: function (array) {
+      var currentIndex = array.length;
+      var temporaryValue;
+      var randomIndex;
+
+      while (currentIndex !== 0) {
+
+        randomIndex = window.utils.getRandomInt(currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+    }
+
   };
 
 })();
