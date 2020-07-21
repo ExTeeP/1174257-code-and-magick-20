@@ -1,9 +1,10 @@
 'use strict';
 
-window.mock = (function () {
+window.data = (function () {
 
   // Количество магов
   var WIZARDS_AMOUNT = 4;
+  var wizards = [];
 
   var userDialog = document.querySelector('.setup');
   var similarListElement = userDialog.querySelector('.setup-similar-list');
@@ -19,9 +20,9 @@ window.mock = (function () {
     return wizardElement;
   }
 
-  function renderWizards(wizards) {
+  function renderWizards(data) {
     var fragment = document.createDocumentFragment();
-    var mixedWizards = window.utils.getShuffleArray(wizards);
+    var mixedWizards = window.utils.getShuffleArray(data);
 
     // Записываем в фрагмент объект заполненный шаблон
     for (var i = 0; i < WIZARDS_AMOUNT; i++) {
@@ -32,6 +33,11 @@ window.mock = (function () {
     userDialog.querySelector('.setup-similar').classList.remove('hidden');
   }
 
-  window.backend.load(renderWizards, window.error.errorHandler);
+  var onSuccess = function (data) {
+    wizards = data;
+    renderWizards(wizards);
+  };
+
+  window.backend.load(onSuccess, window.error.errorHandler);
 
 })();
